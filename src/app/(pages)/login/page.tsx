@@ -1,7 +1,23 @@
+"use client";
+import axios from "axios";
+
 const Login = () => {
+  const handleSend = async (e) => {
+    e.preventDefault();
+    try {
+      const data = await axios.post("http://localhost:3000/api/users/login", {
+        email: "amsnee@dd.io",
+        password: "1238890j043g",
+      });
+      console.log(data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="border rounded-xl p-10 text-center max-w-3xl mx-auto h-[60vh]">
-      <form action="">
+      <form action="" onSubmit={handleSend}>
         <label htmlFor=""></label>
 
         <input

@@ -10,10 +10,7 @@ export const POST = async (request: NextRequest) => {
 
     const salt = 10;
 
-    console.log(password);
     const hashedPassword = await bcrypt.hash(String(password), salt);
-
-    console.log(hashedPassword);
 
     const createdUser = await UserModel.create({
       email,
@@ -22,7 +19,7 @@ export const POST = async (request: NextRequest) => {
       password: hashedPassword,
     });
 
-    // notify or redirect to login route
+    // TODO: notify or redirect to login route
 
     return NextResponse.json({ message: "Sent", createdUser });
   } catch (error) {
