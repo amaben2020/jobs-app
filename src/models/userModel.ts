@@ -1,8 +1,17 @@
 import mongoose, { Schema, model } from "mongoose";
 
+export enum UserType {
+  employee = "employee",
+  employer = "employer",
+}
+
 const userSchema = new Schema(
   {
-    name: String,
+    firstName: String,
+    lastName: {
+      type: String,
+      required: true,
+    },
     email: {
       required: true,
       unique: true,
@@ -13,9 +22,11 @@ const userSchema = new Schema(
       type: String,
       minlength: 4,
     },
-    isAdmin: {
-      type: Boolean,
+    userType: {
       required: true,
+      type: String,
+      enum: ["employee", "employer"],
+      default: "employee",
     },
   },
   {

@@ -3,10 +3,11 @@ import UserModel from "@/models/userModel";
 import bcrypt from "bcrypt";
 import { NextRequest, NextResponse } from "next/server";
 
-dbConnect();
 export const POST = async (request: NextRequest) => {
   try {
-    const { email, name, isAdmin, password } = await request.json();
+    await dbConnect();
+    const { email, firstName, lastName, userType, password } =
+      await request.json();
 
     const salt = 10;
 
@@ -14,10 +15,13 @@ export const POST = async (request: NextRequest) => {
 
     const createdUser = await UserModel.create({
       email,
-      name,
-      isAdmin,
+      firstName,
+      lastName,
+      userType,
       password: hashedPassword,
     });
+
+    console.log(createdUser);
 
     // TODO: notify or redirect to login route
 

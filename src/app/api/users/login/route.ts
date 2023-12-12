@@ -45,6 +45,7 @@ export const POST = async (request: NextRequest, response: NextResponse) => {
       //   maxAge: 60 * 60 * 1000 * 24,
       // });
 
+      // setting token in headers for app
       response.cookies.set("token", token);
 
       return response;

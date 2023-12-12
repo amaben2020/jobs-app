@@ -1,7 +1,9 @@
 "use client";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
+  const router = useRouter();
   const handleSend = async (e) => {
     e.preventDefault();
     try {
@@ -9,6 +11,9 @@ const Login = () => {
         email: "amsnee@dd.io",
         password: "1238890j043g",
       });
+      if (data.data.message === "Login successful") {
+        router.push("/");
+      }
       console.log(data.data);
     } catch (error) {
       console.log(error);

@@ -3,6 +3,7 @@ const nextConfig = {
   experimental: {
     esmExternals: "loose",
     serverComponentsExternalPackages: ["mongoose"],
+    serverActions: true,
   },
 
   webpack: (config) => {
