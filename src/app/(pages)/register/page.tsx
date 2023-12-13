@@ -80,17 +80,15 @@ const Register = async () => {
           </label>
 
           {userTypes.map((userType) => (
-            <>
-              <input
-                aria-labelledby="userType"
-                type="radio"
-                value={userType}
-                name="userType"
-                placeholder="User type"
-                className="p-5 text-black rounded-lg w-9/12 my-6"
-                // checked={userType }
-              />
-            </>
+            <input
+              key={userType}
+              aria-labelledby="userType"
+              type="radio"
+              value={userType}
+              name="userType"
+              placeholder="User type"
+              className="p-5 text-black rounded-lg w-9/12 my-6"
+            />
           ))}
         </div>
 
